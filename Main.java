@@ -56,7 +56,7 @@ public class Main {
         try{
           Thread.sleep(125);
           blockade--;
-          flaps.stop();
+          flaps.interrupt();
         } catch(Exception e){}
 
         System.out.print("\033[H\033[2J");
