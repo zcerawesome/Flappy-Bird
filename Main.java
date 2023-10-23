@@ -28,8 +28,9 @@ public class Main {
         while(play){
         if(blockade == 74){
             Middle = (int) (Math.random() * 21) + 2;
-        } else if(blockade == 10){
+        } else if(blockade == 25){
             blockade = 74;
+            totalScore++;
         }
         //counts to restart the blockade
         //Scans the gravatus file
@@ -64,7 +65,6 @@ public class Main {
         int[] values = playa.getLocation();
         x = values[0];
         y = values[1];
-        totalScore += (double) 1/64 * (double) 4/3;
       }
       }catch(Exception e){
         System.out.print("\033[H\033[2J");
