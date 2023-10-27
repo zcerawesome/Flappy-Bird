@@ -1,11 +1,15 @@
-import java.io.IOException;
 import java.util.EmptyStackException;
+
+import java.util.Scanner;
+import java.io.File;
 
 public class Player{
 
   private int x, y;
   
   static char pointer = 'O';
+
+  static Scanner scanner;
 
   static char[][] Bird = new char[25][75];
 
@@ -18,6 +22,16 @@ public class Player{
         Bird[i][j] = ' ';
       }
     }
+    int gravity = 0;
+    File obj = new File("Gravatus.txt");
+    try{
+      scanner = new Scanner(obj);
+      gravity = Integer.parseInt(scanner.nextLine());
+    } catch(Exception e){}
+    
+    if(gravity < 0){
+      pointer = '*';
+    } else{pointer = 'O';}
     Bird[x][y] = pointer;
     blockade(space, barrierLocation);
     if(checkWin()){
@@ -30,7 +44,7 @@ public class Player{
   public void print(){
     for(int i = 0; i < 25; i++){
       for(int j = 0; j < 75; j++){
-        if(j >= 25){
+        if(j >= 22){
           System.out.print(Bird[i][j]);
         } else{
           System.out.print(" ");
