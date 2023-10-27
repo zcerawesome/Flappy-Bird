@@ -1,12 +1,13 @@
 import java.io.File;
 import java.io.IOException;
-import java.util.EmptyStackException;
 import java.util.Scanner;
 import java.io.PrintWriter;
 public class Main {
   static  KeyboardReader reader = new KeyboardReader();
-  static Scanner scanner;
   static PrintWriter pw;
+
+  static int hz = 62;
+
   public static void main(String[] args) {
 
     boolean play = true;
@@ -22,15 +23,14 @@ public class Main {
     int blockade = 74;
     String s1;
     double totalScore = 0;
-    Start();
+    //Start();
     int Middle = (int) Math.random() * 21 + 2;
       try{
         while(play){
         if(blockade == 74){
             Middle = (int) (Math.random() * 21) + 2;
-        } else if(blockade == 25){
+        } else if(blockade == 8){
             blockade = 74;
-            totalScore++;
         }
         //counts to restart the blockade
         //Scans the gravatus file
@@ -47,7 +47,9 @@ public class Main {
         s1 = "" + totalScore;
         System.out.println("\t\t\tScore: " + s1.substring(0, 3));
         Player playa = new Player();
+        System.out.println("-----------------------------------------------------------------------------------------------------");
         playa.MainIdea(x, y, force, blockade, Middle);
+        System.out.println("-----------------------------------------------------------------------------------------------------");
         //multi-Theads o change acceleration
         flapping flaps = new flapping();
         flaps.start();
@@ -55,7 +57,7 @@ public class Main {
             throw new IOException();
         } 
         try{
-          Thread.sleep(125);
+          Thread.sleep(hz);
           blockade--;
           flaps.interrupt();
         } catch(Exception e){}
@@ -65,9 +67,11 @@ public class Main {
         int[] values = playa.getLocation();
         x = values[0];
         y = values[1];
+        totalScore += (double) 1/49;
       }
       }catch(Exception e){
         System.out.print("\033[H\033[2J");
+        System.out.println(e);
         System.out.print("You have died ");
         try{
             Thread.sleep(1000);
@@ -113,6 +117,7 @@ public class Main {
     try{
       Scanner scan = new Scanner(f);
       String s1 = scan.nextLine();
+      scan.close();
       return s1;
     }catch(Exception e){return null;}
   }
