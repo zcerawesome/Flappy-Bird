@@ -8,9 +8,12 @@ public class flapping extends Thread{
   static Scanner scanner;
   static PrintWriter pw;
   
+  private boolean running = true;
+
   @Override
   public void run(){
-    File obj = new File("Gravatus.txt");
+    while(running){
+      File obj = new File("Gravatus.txt");
     reader.pauseNothing();
     
     throwAway(obj);
@@ -18,6 +21,8 @@ public class flapping extends Thread{
       pw.println(-2);
       pw.close();
     }catch(Exception e){}
+    }
+    return;
   }
 
   private void throwAway(File f){
