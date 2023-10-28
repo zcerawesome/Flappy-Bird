@@ -71,7 +71,6 @@ public class Main {
       }
       }catch(Exception e){
         System.out.print("\033[H\033[2J");
-        System.out.println(e);
         System.out.print("You have died ");
         try{
             Thread.sleep(1000);
