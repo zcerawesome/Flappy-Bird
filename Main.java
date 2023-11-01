@@ -1,5 +1,4 @@
 import java.io.File;
-import java.io.IOException;
 import java.util.Scanner;
 import java.io.PrintWriter;
 public class Main {
@@ -27,8 +26,8 @@ public class Main {
     int Middle = (int) Math.random() * 21 + 2;
       try{
         while(play){
-        if(blockade == 74){
-            Middle = (int) (Math.random() * 21) + 2;
+        if(blockade == 73){
+            Middle = (int) (Math.random() * 21) + 3;
         } else if(blockade == 8){
             blockade = 74;
         }
@@ -53,9 +52,6 @@ public class Main {
         //multi-Theads o change acceleration
         flapping flaps = new flapping();
         flaps.start();
-        if(playa.checkWin()){
-            throw new IOException();
-        } 
         try{
           Thread.sleep(hz);
           blockade--;
