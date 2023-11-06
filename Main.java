@@ -21,7 +21,7 @@ public class Main {
     int y = 25;
     int blockade = 74;
     double totalScore = 0;
-    //Start();
+    Start();
     int Middle = (int) Math.random() * 20 + 2;
       try{
         while(play){
